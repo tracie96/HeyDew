@@ -1,0 +1,1628 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Peexoo's API swagger documentation",
+        "description": "This is a sample Petstore server.  You can find out more about Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "email": "apiteam@swagger.io"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/bookings": {
+            "post": {
+                "tags": [
+                    "bookings"
+                ],
+                "summary": "adds a new Booking",
+                "operationId": "addBookings",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key_scheme": []
+                    }
+                ]
+            }
+        },
+        "/api/bookings/types": {
+            "get": {
+                "tags": [
+                    "bookings"
+                ],
+                "summary": "Fetch all bookings type bookings",
+                "operationId": "listBookings",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/bookings/search/": {
+            "post": {
+                "tags": [
+                    "bookings"
+                ],
+                "summary": "Searches for {count} bookings",
+                "operationId": "listBookings",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/bookings/status": {
+            "patch": {
+                "tags": [
+                    "bookings"
+                ],
+                "summary": "Searches for {count} bookings",
+                "operationId": "listBookings",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/bookings/album": {
+            "put": {
+                "tags": [
+                    "bookings"
+                ],
+                "summary": "adds a new album to booking",
+                "operationId": "addAlbumToBooking",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key_scheme": []
+                    }
+                ]
+            }
+        },
+        "/api/bookings/report/{who}": {
+            "post": {
+                "tags": [
+                    "bookings"
+                ],
+                "summary": "Allows a user to report a photographer for a booking",
+                "operationId": "reportPhotographer",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key_scheme": []
+                    }
+                ]
+            }
+        },
+        "/api/faq": {
+            "get": {
+                "tags": [
+                    "faq"
+                ],
+                "summary": "fetch all FAQ",
+                "operationId": "getFAQs",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "faq"
+                ],
+                "summary": "adds a new FAQ",
+                "operationId": "addFAQ",
+                "requestBody": {
+                    "description": "FAQ Object",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/FAQ"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/faq/{id}": {
+            "patch": {
+                "tags": [
+                    "faq"
+                ],
+                "summary": "update a new FAQ",
+                "operationId": "updateFAQ",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Faq Id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "FAQ Object",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/FAQ"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/findmyface/": {
+            "put": {
+                "tags": [
+                    "findmyface"
+                ],
+                "summary": "Downloads the album to the user's FindMyFace Album Collection",
+                "operationId": "download",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "findmyface"
+                ],
+                "summary": "Searches for the face of a user",
+                "operationId": "FindMyFace",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "file"
+                                ],
+                                "properties": {
+                                    "file": {
+                                        "description": "image to upload",
+                                        "type": "file",
+                                        "format": "file"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/findmyface/train": {
+            "post": {
+                "tags": [
+                    "findmyface"
+                ],
+                "summary": "Trains uploaded images for recognition",
+                "operationId": "indexFindMyFace",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "file"
+                                ],
+                                "properties": {
+                                    "file": {
+                                        "description": "image to upload",
+                                        "type": "file",
+                                        "format": "file"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/findmyface/subscribe": {
+            "get": {
+                "tags": [
+                    "findmyface"
+                ],
+                "summary": "Subscribe to FindMyFace",
+                "operationId": "subscribe",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/images/random/{count}": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "Fetches {count} Random Images",
+                "operationId": "getRandomImages",
+                "parameters": [
+                    {
+                        "name": "count",
+                        "in": "path",
+                        "description": "Maximum number of random images to fetch",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/images/explore/{count}": {
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "Fetches {count} Random Images",
+                "operationId": "getRandomImages",
+                "parameters": [
+                    {
+                        "name": "count",
+                        "in": "path",
+                        "description": "Maximum number of random images to fetch",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/payment/test": {
+            "get": {
+                "tags": [
+                    "payment"
+                ],
+                "summary": "Tests the Payment Query",
+                "operationId": "testPayment",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    },
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        },
+        "/api/payment/verify/{reference}": {
+            "get": {
+                "tags": [
+                    "payment"
+                ],
+                "summary": "Tests reference verification",
+                "operationId": "testVerify",
+                "parameters": [
+                    {
+                        "name": "reference",
+                        "in": "path",
+                        "description": "Transaction reference to verify",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    },
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        },
+        "/api/payment": {
+            "post": {
+                "tags": [
+                    "payment"
+                ],
+                "summary": "Creates a new Payment for a user",
+                "operationId": "addUserPayment",
+                "requestBody": {
+                    "description": "UserPayment Object",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserPayment"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    },
+                    "200": {
+                        "description": "Success"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key_scheme": []
+                    }
+                ]
+            }
+        },
+        "/api/photographer/community": {
+            "post": {
+                "tags": [
+                    "photographer"
+                ],
+                "summary": "Adds the User details to the Peexoo Photographer Community",
+                "operationId": "joinCommunity",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/photographer/join": {
+            "post": {
+                "tags": [
+                    "photographer"
+                ],
+                "summary": "Add an Authenticated User to the list of Photographers",
+                "operationId": "join",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key_scheme": []
+                    }
+                ]
+            }
+        },
+        "/api/photographer/": {
+            "get": {
+                "tags": [
+                    "photographer"
+                ],
+                "summary": "Gets the Photographer Object for an authenticated User",
+                "operationId": "getAuthPhotographer",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key_scheme": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "photographer"
+                ],
+                "summary": "Updates a photographer's profile",
+                "operationId": "update",
+                "requestBody": {
+                    "description": "Photographer Oject",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Photographer"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key_scheme": []
+                    }
+                ]
+            }
+        },
+        "/api/photographer/bvn": {
+            "patch": {
+                "tags": [
+                    "photographer"
+                ],
+                "summary": "Updates a photographer's bvn",
+                "operationId": "updateBVN",
+                "requestBody": {
+                    "description": "Photographer Oject",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Photographer"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key_scheme": []
+                    }
+                ]
+            }
+        },
+        "/api/photographer/id/{id}": {
+            "get": {
+                "tags": [
+                    "photographer"
+                ],
+                "summary": "Gets the Photographer Object using photographer Id",
+                "operationId": "getPhotographerById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of the Photographer",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key_scheme": []
+                    }
+                ]
+            }
+        },
+        "/api/photographer/search": {
+            "post": {
+                "tags": [
+                    "photographer"
+                ],
+                "summary": "Searches for Photographers",
+                "operationId": "searchPhotographers",
+                "requestBody": {
+                    "description": "Photographer Oject",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PhotographerSearchParams"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/photographer/report": {
+            "post": {
+                "tags": [
+                    "photographer"
+                ],
+                "summary": "Report a Photographers",
+                "operationId": "reportPhotographer",
+                "requestBody": {
+                    "description": "Photographer Oject",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Photographer"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/photographer/bankdetails/": {
+            "get": {
+                "tags": [
+                    "bankdetails"
+                ],
+                "summary": "Gets BankDetails for a Photographer",
+                "operationId": "getBankDetails",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key_scheme": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "bankdetails"
+                ],
+                "summary": "Adds a new BankDetail for a Photographer",
+                "operationId": "addBankDetails",
+                "requestBody": {
+                    "description": "Photographer Bank Account Details Oject",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PhotographerBankAccountDetails"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key_scheme": []
+                    }
+                ]
+            }
+        },
+        "/api/photographer/details/": {
+            "get": {
+                "tags": [
+                    "bankdetails"
+                ],
+                "summary": "Gets BankDetails for a Photographer",
+                "operationId": "getBankDetails",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key_scheme": []
+                    }
+                ]
+            }
+        },
+        "/api/photographer/portfolio/": {
+            "get": {
+                "tags": [
+                    "bankdetails"
+                ],
+                "summary": "Gets BankDetails for a Photographer",
+                "operationId": "getBankDetails",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key_scheme": []
+                    }
+                ]
+            }
+        },
+        "/api/photographer/availability": {
+            "get": {
+                "tags": [
+                    "bankdetails"
+                ],
+                "summary": "Gets BankDetails for a Photographer",
+                "operationId": "getBankDetails",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key_scheme": []
+                    }
+                ]
+            }
+        },
+        "/api/photographer/bookings": {
+            "get": {
+                "tags": [
+                    "photographer"
+                ],
+                "summary": "Gets Photographer's bookings",
+                "operationId": "getPhotographerBookings",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key_scheme": []
+                    }
+                ]
+            }
+        },
+        "/api/photographer/{photographer_id}/profile/images/{category}": {
+            "get": {
+                "tags": [
+                    "photographer"
+                ],
+                "summary": "Gets Photographer's profile Images",
+                "operationId": "getPhotographerProfileImages",
+                "parameters": [
+                    {
+                        "name": "photographer_id",
+                        "in": "path",
+                        "description": "Id of the Photographer",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "category",
+                        "in": "path",
+                        "description": "The category of the profile image. ie PROFILE_COVER_IMAGES or HOMEPAGE_SLIDER_IMAGES",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Profile imges fetched successfully"
+                    }
+                }
+            }
+        },
+        "/api/photographer/profile/images": {
+            "post": {
+                "tags": [
+                    "photographer"
+                ],
+                "summary": "Adds an image's url to the list of a Photographer's profile Images in a category",
+                "operationId": "addPhotographerProfileImages",
+                "requestBody": {
+                    "description": "Photographer Oject",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PhotographerProfileImage"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Profile images fetched successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key_scheme": []
+                    }
+                ]
+            }
+        },
+        "/api/subscription/charge/{subscription_plan_id}": {
+            "get": {
+                "tags": [
+                    "subscription"
+                ],
+                "summary": "Generates Payment for an authenticated user to a Subscription Object",
+                "operationId": "requestPaymentForSubscription",
+                "parameters": [
+                    {
+                        "name": "subscription_plan_id",
+                        "in": "path",
+                        "description": "Id of the Subscription to join",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key_scheme": []
+                    }
+                ]
+            }
+        },
+        "/api/subscription/complete": {
+            "post": {
+                "tags": [
+                    "subscription"
+                ],
+                "summary": "This endpoint has to be hit by the payment gateway, but we'll make it open for testing purposes.",
+                "operationId": "subscribeUser",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key_scheme": []
+                    }
+                ]
+            }
+        },
+        "/api/subscription/search": {
+            "post": {
+                "tags": [
+                    "subscription"
+                ],
+                "summary": "Searches for an authenticated user's subscriptions",
+                "operationId": "getUserSubscriptions",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key_scheme": []
+                    }
+                ]
+            }
+        },
+        "/api/subscription/package": {
+            "patch": {
+                "tags": [
+                    "subscription"
+                ],
+                "summary": "Adds a new Subscription package",
+                "operationId": "createSubscriptionPackage",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key_scheme": []
+                    }
+                ]
+            }
+        },
+        "/api/auth/login": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Logs a user in",
+                "operationId": "loginUser",
+                "requestBody": {
+                    "description": "User Oject",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/auth/create": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Creates a User",
+                "operationId": "createAccount",
+                "requestBody": {
+                    "description": "User Oject",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/auth/verify/{email}/{pin}": {
+            "patch": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Verifies a User's account",
+                "operationId": "verifyAccount",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "path",
+                        "description": "The email for the verification sent to the user",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "pin",
+                        "in": "path",
+                        "description": "The verification code sent to the user",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/auth/forgotPassword/{url_path}/{email}": {
+            "get": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Send a password reset Link",
+                "operationId": "forgotPassword",
+                "parameters": [
+                    {
+                        "name": "url_path",
+                        "in": "path",
+                        "description": "The Url to the page that would conclude the reset. The final url would be {url_path}/token",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "email",
+                        "in": "path",
+                        "description": "Email of the user requesting for email reset",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/auth/resetpassword": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "",
+                "operationId": "resetPassword",
+                "requestBody": {
+                    "description": "User Oject",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ResetForgotPassword"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/auth/photographer/create": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Creates a Photographer User account",
+                "operationId": "createQuickAccountForPhotographer",
+                "requestBody": {
+                    "description": "User Oject",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/user": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "Get Authenticated User's data",
+                "operationId": "getUser",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key_scheme": []
+                    }
+                ]
+            }
+        },
+        "/api/user/archive/{id}": {
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "Deactivate a User",
+                "operationId": "archiveUser",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of the User to ban",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key_scheme": []
+                    }
+                ]
+            }
+        },
+        "/api/user/update": {
+            "patch": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "Updates an Authenticated User. It can only update the name and profile image ",
+                "operationId": "updateUser",
+                "requestBody": {
+                    "description": "User Oject",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key_scheme": []
+                    }
+                ]
+            }
+        },
+        "/api/user/id/{id}": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "Get a User's data by user Id. Prameter",
+                "operationId": "getUserById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of the User to ban",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key_scheme": []
+                    }
+                ]
+            }
+        },
+        "/api/greet": {
+            "get": {
+                "tags": [
+                    "greeting"
+                ],
+                "summary": "Returns a Peexoo Greeting",
+                "description": "A sample Peexoo greeting to test out the API",
+                "operationId": "sampleFunctionWithDoc",
+                "responses": {
+                    "default": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Booking": {
+                "title": "Photographer Object Representation",
+                "description": "Photographer model",
+                "required": [
+                    "user_id",
+                    "password"
+                ],
+                "properties": {
+                    "id": {
+                        "title": "The id of the booking",
+                        "description": "Booking Id",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "user_id": {
+                        "title": "The Id of the user for this booking",
+                        "description": "User's Id",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "photographer_id": {
+                        "title": "Photographer's Id",
+                        "description": "The Id of the photographer for this booking.",
+                        "type": "string"
+                    },
+                    "booking_category_id": {
+                        "title": "Booking Category Id",
+                        "description": "The Id of the category that the booking belongs to",
+                        "type": "string"
+                    },
+                    "title": {
+                        "title": "Title",
+                        "description": "The title for this booking. This is optional",
+                        "type": "string"
+                    },
+                    "extra_message": {
+                        "title": "Extra message",
+                        "description": "Additional Text provided by the user",
+                        "type": "string"
+                    },
+                    "country": {
+                        "title": "Country",
+                        "description": "The country for the booking's shoot",
+                        "type": "string"
+                    },
+                    "state": {
+                        "title": "State",
+                        "description": "The state in the country for the booking's shoot",
+                        "type": "string"
+                    },
+                    "address1": {
+                        "title": "Address 1",
+                        "description": "The User's first Address",
+                        "type": "string"
+                    },
+                    "address2": {
+                        "title": "Address 2",
+                        "description": "The User's second Address ????????",
+                        "type": "string"
+                    },
+                    "type": {
+                        "title": "Type",
+                        "description": "The Type of Booking. This is optional",
+                        "type": "string"
+                    },
+                    "shoot_start_date": {
+                        "title": "Start Date",
+                        "description": "The start date of the shoot for this booking",
+                        "type": "string"
+                    },
+                    "shoot_end_date": {
+                        "title": "End Date",
+                        "description": "The end date of the shoot for this booking",
+                        "type": "string"
+                    },
+                    "delivery_date": {
+                        "title": "Delivery date",
+                        "description": "The Date for delivery of the booking's shoot. Defaults to shoot end date if not set.",
+                        "type": "string"
+                    },
+                    "status": {
+                        "title": "Status",
+                        "description": "The current status os the booking. This is set by the backend",
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Photographer"
+                }
+            },
+            "FAQ": {
+                "title": "FAQ Object Representation",
+                "description": "FAQ model",
+                "properties": {
+                    "question": {
+                        "title": "Question",
+                        "description": "Question",
+                        "type": "string"
+                    },
+                    "answer": {
+                        "title": "Answer",
+                        "description": "Answer",
+                        "type": "string"
+                    },
+                    "status": {
+                        "title": "status",
+                        "description": "Status",
+                        "type": "boolean"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "FAQ"
+                }
+            },
+            "Photographer": {
+                "title": "Photographer Object Representation",
+                "description": "Photographer model",
+                "required": [
+                    "user_id",
+                    "password"
+                ],
+                "properties": {
+                    "id": {
+                        "title": "Id",
+                        "description": "Photographer Id",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "user_id": {
+                        "title": "User Id",
+                        "description": "User's Id",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "about_us": {
+                        "title": "Introduction Text",
+                        "description": "A Brief Description.",
+                        "type": "string"
+                    },
+                    "category": {
+                        "title": "Introduction Text",
+                        "description": "A Brief Description.",
+                        "type": "string"
+                    },
+                    "photography_type": {
+                        "title": "Introduction Text",
+                        "description": "A Brief Description.",
+                        "type": "string"
+                    },
+                    "region": {
+                        "title": "Introduction Text",
+                        "description": "A Brief Description.",
+                        "type": "string"
+                    },
+                    "business_name": {
+                        "title": "Introduction Text",
+                        "description": "A Brief Description.",
+                        "type": "string"
+                    },
+                    "verified": {
+                        "title": "Introduction Text",
+                        "description": "A Brief Description.",
+                        "type": "string"
+                    },
+                    "archived": {
+                        "title": "Introduction Text",
+                        "description": "A Brief Description.",
+                        "type": "string"
+                    },
+                    "bvn": {
+                        "title": "Introduction Text",
+                        "description": "A Brief Description.",
+                        "type": "string"
+                    },
+                    "bvn_verified": {
+                        "title": "Introduction Text",
+                        "description": "A Brief Description.",
+                        "type": "string"
+                    },
+                    "id_card": {
+                        "title": "Introduction Text",
+                        "description": "A Brief Description.",
+                        "type": "string"
+                    },
+                    "id_card_verified": {
+                        "title": "Introduction Text",
+                        "description": "A Brief Description.",
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Photographer"
+                }
+            },
+            "PhotographerBankAccountDetails": {
+                "title": "PhotographerBankAccountDetails Object Representation",
+                "description": "PhotographerBankAccountDetails model",
+                "properties": {
+                    "photographer_id": {
+                        "title": "Id",
+                        "description": "Photographer Id",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "first_name": {
+                        "title": "User Id",
+                        "description": "First Name on Bank",
+                        "type": "string"
+                    },
+                    "last_name": {
+                        "title": "Introduction Text",
+                        "description": "Last Name on Bank",
+                        "type": "string"
+                    },
+                    "bank_name": {
+                        "title": "",
+                        "description": "Bank Name",
+                        "type": "string"
+                    },
+                    "account_number": {
+                        "title": "account Number",
+                        "description": "Bank's account number",
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "PhotographerBankAccountDetails"
+                }
+            },
+            "PhotographerProfileImage": {
+                "title": "PhotographerProfileImage Object Representation",
+                "description": "PhotographerProfileImage model",
+                "properties": {
+                    "photographer_id": {
+                        "title": "Photographer Id",
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "image_url": {
+                        "title": "Image URL",
+                        "description": "",
+                        "type": "string"
+                    },
+                    "image_section": {
+                        "title": "Image Section",
+                        "description": "",
+                        "type": "string"
+                    },
+                    "is_active": {
+                        "title": "Is Active",
+                        "description": "",
+                        "type": "boolean"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "PhotographerProfileImage"
+                }
+            },
+            "PhotographerSearchParams": {
+                "title": "Photographer Object Representation",
+                "description": "Photographer model",
+                "required": [
+                    "user_id",
+                    "password"
+                ],
+                "properties": {
+                    "id": {
+                        "title": "Id",
+                        "description": "Photographer Id",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "user_id": {
+                        "title": "User Id",
+                        "description": "User's Id",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "about_us": {
+                        "title": "Introduction Text",
+                        "description": "A Brief Description.",
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Photographer"
+                }
+            },
+            "ResetForgotPassword": {
+                "title": "Photographer Object Representation",
+                "description": "Photographer model",
+                "required": [
+                    "user_id",
+                    "password"
+                ],
+                "properties": {
+                    "email": {
+                        "title": "Email",
+                        "description": "",
+                        "type": "string"
+                    },
+                    "resetToken": {
+                        "title": "Reset Token",
+                        "description": "",
+                        "type": "string"
+                    },
+                    "new_password": {
+                        "title": "New Password",
+                        "description": "",
+                        "type": "string"
+                    },
+                    "repeat_new_password": {
+                        "title": "Repeat New Password",
+                        "description": "",
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Photographer"
+                }
+            },
+            "User": {
+                "title": "User Object Representation",
+                "description": "User model",
+                "required": [
+                    "email",
+                    "password"
+                ],
+                "properties": {
+                    "id": {
+                        "title": "Id",
+                        "description": "User Id",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "last_name": {
+                        "title": "Name",
+                        "description": "User Last Name",
+                        "type": "string"
+                    },
+                    "first_name": {
+                        "title": "Name",
+                        "description": "User First Name",
+                        "type": "string"
+                    },
+                    "email": {
+                        "title": "Email",
+                        "description": "User Email",
+                        "type": "string"
+                    },
+                    "tel_number": {
+                        "title": "Tel Number",
+                        "description": "User Tel number",
+                        "type": "string"
+                    },
+                    "password": {
+                        "title": "password",
+                        "description": "User password",
+                        "type": "string",
+                        "format": "password"
+                    },
+                    "profile_image": {
+                        "title": "Profile Picture",
+                        "description": "User Profile Picture. This is a url to the image. ",
+                        "type": "string"
+                    },
+                    "job_description": {
+                        "title": "Job Description",
+                        "description": "The person's Job Description in a word!!",
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "User"
+                }
+            },
+            "UserPayment": {
+                "title": "UserPayment Object Representation",
+                "description": "UserPayment model",
+                "required": [
+                    "email",
+                    "password"
+                ],
+                "properties": {
+                    "id": {
+                        "title": "Id",
+                        "description": "UserPayment Id",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "user_id": {
+                        "title": "User id",
+                        "description": "User id",
+                        "type": "integer"
+                    },
+                    "title": {
+                        "title": "Title",
+                        "description": "UserPayment Title",
+                        "type": "string"
+                    },
+                    "type": {
+                        "title": "UserPayment Type",
+                        "description": "User password",
+                        "type": "string",
+                        "format": "Type"
+                    },
+                    "payment_date": {
+                        "title": "Payment Date",
+                        "description": "UserPayment Date",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "amount": {
+                        "title": "Amount",
+                        "description": "Charge Amount",
+                        "type": "number",
+                        "format": "double"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "UserPayment"
+                }
+            }
+        },
+        "securitySchemes": {
+            "api_key_scheme": {
+                "type": "apiKey",
+                "name": "Authorization",
+                "in": "header"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "greeting",
+            "description": "Sample package to test out the greeting APIs"
+        },
+        {
+            "name": "auth",
+            "description": "Peexoo's Authentication APIs"
+        },
+        {
+            "name": "photographer",
+            "description": "Peexoo's Photographer APIs"
+        }
+    ]
+}

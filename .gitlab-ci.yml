@@ -1,0 +1,17 @@
+
+stages:
+  - build
+  - execute
+  - deploy
+
+
+copy_files:
+  stage: build
+  script:
+    - cp -R ./public/* /var/www/html/
+  only:
+    - dev
+  tags:
+    - comingsoon
+    - peexoo
+    - runner
